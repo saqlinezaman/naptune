@@ -143,6 +143,7 @@ if ($flag == false){
     $_SESSION["register-complete"] = "Registation done";
     $_SESSION["register-name"] = "$name";
     $_SESSION["register-email"] = "$email";
+    
     header("location:signin.php");
  }
 
@@ -250,7 +251,7 @@ if(!$flag){
         $_SESSION ['temp-name'] = $author["name"];
         $_SESSION ['author-email'] = $author["email"];
 
-        header("location:../backend/home/home.php");
+        header("location:../backend/home/home.php"); 
 
 
 

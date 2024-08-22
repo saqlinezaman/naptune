@@ -76,4 +76,34 @@ if(isset($_POST["nameupdate-btn"])){
         }
     }
 
+
+
+    // image set start
+
+    if(isset($_POST["image-btn"])){
+        $image = $_FILES["image"]['name'];
+        $temp_path = $_FILES["image"]['tmp_name'];
+
+        if($image){
+            $id = $_SESSION ['author-id'] ;
+            $name = $_SESSION ['author-name'] ;
+            $explode = explode(".",$image);
+            $extention = end($explode);
+            // date_default_timezone_set('Asia/Dhaka');
+            $new_name = $id. "-" . $name ."-".date("d-m-Y") . "-" . $extention;  
+            $local_path = "../../public/profile/" . $new_name;
+
+            if(move_uploaded_file($temp_path , $local_path)){
+                    $query = "UPDATE users SET image='$new_name' WHERE id= '$id'";
+                    mysqli_query($db,$query);
+                    header("location: settings.php");
+                   
+            }else {
+                header("location: settings.php");
+            }
+        }
+        
+        
+    }
+
 ?>

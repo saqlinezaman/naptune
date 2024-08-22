@@ -10,6 +10,10 @@ header("location: ../../authentication/signin.php");
 $explode = explode("/" , $_SERVER["PHP_SELF"]);
 $link = end($explode);
 
+$id = $_SESSION ['author-id'] ;
+$query = "SELECT * FROM users WHERE id='$id'";
+$connect = mysqli_query($db,$query);
+$user = mysqli_fetch_assoc($connect);
 ?>
 
 
@@ -59,7 +63,11 @@ $link = end($explode);
                 <a href="index.html" class="logo-icon"><span class="logo-text">Neptune</span></a>
                 <div class="sidebar-user-switcher user-activity-online">
                     <a href="#">
-                        <img src="../../public/backend/assets/images/avatars/avatar.png">
+                        <?php if($user ["image"] =='defult imgwebp.webp') :?>
+                        <img src="../../public/defult image/<?= $user ["image"]?>">
+                        <?php else : ?>
+                        <img src="../../public/prifile/?= $user ["image"]?>">
+                        <?php endif;?>
                         <span class="activity-indicator"></span>
                         <span class="user-info-text"><?= $_SESSION ['author-name'] ;?> <br><span class="user-state-info"><?= $_SESSION ['author-email'] ;?></span></span>
                     </a>

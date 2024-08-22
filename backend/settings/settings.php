@@ -68,7 +68,7 @@ include "../extends/header.php";
             </div>
         </div>
 
-        <!-- update password -->
+        <!-- update password  start-->
 
         <div class="col-6">
             <div class="card">
@@ -84,19 +84,18 @@ include "../extends/header.php";
                         <label for="exampleInputEmail1" class="form-label">Old Password</label>
                          <input name="old-pass" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
-                         
                             <!-- old password end -->
 
                             <!-- new password start -->
 
-                        <label for="exampleInputEmail2" class="form-label">Old Password</label>
+                        <label for="exampleInputEmail2" class="form-label">New Password</label>
                          <input name="new-pass" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                             <!-- new password end -->
 
                             <!-- confirm new password start -->
 
-                        <label for="exampleInputEmail3" class="form-label">Old Password</label>
+                        <label for="exampleInputEmail3" class="form-label">Confirm New Password</label>
                          <input name="c-pass" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
                             <!-- confirm new  password end -->
@@ -127,13 +126,37 @@ include "../extends/header.php";
                      <?php endif ; unset($_SESSION["pass-update-success"]);?>
                       <!-- pass update success -->
 
+                    <div class="d-grid gap-2 mt-3">
+                        <button name="passupdate-btn" class="btn btn-primary" type="submit">Upadate</button>
+                    </div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+        <!-- update password  end-->
+
+        <!-- image updare start -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Image Update</h1>
+                </div>
+                <form action="settings-manage.php" method="POST" enctype="multipart/form-data">
+                <div class="card-body">
+                            <!-- old password start -->
+
+                        <label for="exampleInputEmail1" class="form-label">Set your image</label>
+                         <input name="image" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
                          <div class="d-grid gap-2 mt-3">
-                        <button name="passupdate-btn" class="btn btn-primary" type="submit">Button</button>
+                        <button name="image-btn" class="btn btn-primary" type="submit">Upadate</button>
                     </div>
                 </div>
                 </form>
             </div>
         </div>
+        <!-- image updare  end -->
       </div> 
 
      

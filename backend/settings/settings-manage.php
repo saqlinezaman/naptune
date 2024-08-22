@@ -49,7 +49,6 @@ if(isset($_POST["nameupdate-btn"])){
             $match_query = "SELECT COUNT(*) AS 'match' FROM users WHERE id='$id' AND password='$enceypt'";
 
            $connect = mysqli_query($db,$match_query);
-           
             $match = mysqli_fetch_assoc($connect)['match'];
             
             if($match == 1){

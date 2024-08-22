@@ -66,7 +66,7 @@ $user = mysqli_fetch_assoc($connect);
                         <?php if($user ["image"] =='defult imgwebp.webp') :?>
                         <img src="../../public/defult image/<?= $user ["image"]?>">
                         <?php else : ?>
-                        <img src="../../public/prifile/?= $user ["image"]?>">
+                        <img src="../../public/profile/<?= $user["image"]?>">
                         <?php endif;?>
                         <span class="activity-indicator"></span>
                         <span class="user-info-text"><?= $_SESSION ['author-name'] ;?> <br><span class="user-state-info"><?= $_SESSION ['author-email'] ;?></span></span>

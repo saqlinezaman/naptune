@@ -41,6 +41,8 @@ $user = mysqli_fetch_assoc($connect);
     <link href="../../public/backend/assets/plugins/perfectscroll/perfect-scrollbar.css" rel="stylesheet">
     <link href="../../public/backend/assets/plugins/pace/pace.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     
     <!-- Theme Styles -->
     <link href="../../public/backend/assets/css/main.min.css" rel="stylesheet">
@@ -78,12 +80,19 @@ $user = mysqli_fetch_assoc($connect);
                     <li class="sidebar-title">
                         Apps
                     </li>
+                    <li class="">
+                        <a href="../../index.php"><i class="material-icons-two-tone">home</i>Visit site<span class="badge rounded-pill badge-danger float-end"></span></a>
+                    </li>
                     <li class="<?= ($link == "home.php") ? "active-page" : " "?>">
                         <a href="../home/home.php" class="active"><i class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
                     <li class="<?= ($link == "settings.php") ? "active-page" : " "?>">
-                        <a href="../settings/settings.php"><i class="material-icons-two-tone">settings</i>Settings<span class="badge rounded-pill badge-danger float-end">87</span></a>
+                        <a href="../settings/settings.php"><i class="material-icons-two-tone">settings</i>Settings<span class="badge rounded-pill badge-danger float-end"></span></a>
                     </li>
+                    <li class="<?= ($link == "services.php") ? "active-page" : " "?>">
+                        <a href="../services/services.php"><i class="material-icons-two-tone">medical_services</i>services<span class="badge rounded-pill badge-danger float-end"></span></a>
+                    </li>
+                    
                     <!-- <li>
                         <a href="file-manager.html"><i class="material-icons-two-tone">cloud_queue</i>File Manager</a>
                     </li>

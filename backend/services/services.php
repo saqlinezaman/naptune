@@ -16,7 +16,7 @@ $services = mysqli_query($db, $services_query)
    </div>
 </div>
 <?php endif; unset($_SESSION ['service_insert']); ?>
-
+<!-- status -->
 <?php if(isset($_SESSION ['service-status'])) : ?>
 <div class="row">
    <div class="coll-12">
@@ -29,6 +29,19 @@ $services = mysqli_query($db, $services_query)
    </div>
 </div>
 <?php endif; unset($_SESSION ['service-status']); ?>
+<!-- update -->
+<?php if(isset($_SESSION ['service_edit'])) : ?>
+<div class="row">
+   <div class="coll-12">
+   <div class="alert alert-custom" role="alert">
+        <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">done</i></div>
+        <div class="alert-content">
+            <span class="alert-title"><?= $_SESSION ['service_edit']?></span>
+        </div>
+    </div>
+   </div>
+</div>
+<?php endif; unset($_SESSION ['service_edit']); ?>
 
 <!-- services page -->
 <div class="row">
@@ -62,8 +75,16 @@ $services = mysqli_query($db, $services_query)
                          <td><?=  $service ['titel']?></td>
                          <td> <?=  $service ['descryption']?></td>
                          <td>
-                        <a href="store.php?statusid=<?= $service['id'] ?>" class="<?=($service['status'] == 'deactive') ? 'badge bg-danger' : 'badge bg-success' ?> text-white"><?= $service['status'] ?></a>
+                        <a href="store.php?statusid=<?= $service['id'] ?>" class="<?= ($service['status'] == 'deactive') ? 'badge bg-danger' : 'badge bg-success' ?> text-white"><?= $service['status'] ?></a>
                     </td>
+                    <td>
+                        <div class="d-flex justify-content-around align-items-center"> 
+                            <a href="edit.php?editid=<?= $service['id'] ?>" class="text-primary fa-2x">
+                                <i class="fa fa-chain"></i>
+                        <a href="edit.php"> <i class="fa fa-trash-o text-danger fa-2x"></i></a>
+                    </div>
+                    </td>
+                   
                       </tr>
                       <?php endforeach?>
                   </tbody>

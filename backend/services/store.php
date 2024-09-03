@@ -10,11 +10,12 @@ if(isset($_POST['insert'])){
 
     if( $titel && $descryption && $icon){
         $query = " INSERT INTO services (titel,descryption,icon) VALUES ('$titel','$descryption','$icon')";
-        
         mysqli_query($db , $query );
         $_SESSION ['service_insert'] = 'Service insert successfully';
         header('location: services.php');
 
+    }else{
+        header('location: create.php');
     }
 }
 
@@ -40,24 +41,31 @@ if(isset($_GET['statusid'])){
     }
 }
 
-if(isset($_POST["update"])){
+// update
+if(isset($_POST['update'])){
     if(isset($_GET['update'])){
-        $id = $_GET['update'] ;
+        $id = $_GET['update'];
         $titel = $_POST['titel'];
         $descryption = $_POST['descryption'];
         $icon = $_POST['icon'];
     
-    
-        if( $titel && $descryption && $icon){
-            $query = "UPDATE services SET titel='$titel',descryption='$descryption',icon='$icon' WHERE id='$id'";
-            
-            mysqli_query($db , $query );
-            $_SESSION ['service_edit'] = 'Service update successfully';
+        if($titel && $descryption && $icon){
+            $query_update = "UPDATE services SET titel='$titel',descryption='$descryption',icon='$icon' WHERE id='$id'";
+            mysqli_query($db,$query_update);
+            $_SESSION['service_edit'] = "Service Update Successfully Complete"; 
             header('location: services.php');
-    
         }
+    
     }
 }
+if(isset($_GET['deleteid'])){ 
+    $id = $_GET['deleteid'] ;
+    $delete_query = "DELETE FROM services WHERE id='$id'";
+    mysqli_query($db,$delete_query);
+    $_SESSION['service_delete'] = "Service Deleted Successfully"; 
+    header('location: services.php');
+}
+
 
 
 // ?>

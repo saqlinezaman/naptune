@@ -1,7 +1,7 @@
 <?php
 include "../extends/header.php";
 $services_query = "SELECT * FROM services";
-$services = mysqli_query($db, $services_query)
+$services = mysqli_query($db,$services_query);
 ?>
 
 <?php if(isset($_SESSION ['service_insert'])): ?>
@@ -29,7 +29,7 @@ $services = mysqli_query($db, $services_query)
    </div>
 </div>
 <?php endif; unset($_SESSION ['service-status']); ?>
-<!-- update -->
+<!-- Update -->
 <?php if(isset($_SESSION ['service_edit'])) : ?>
 <div class="row">
    <div class="coll-12">
@@ -42,6 +42,19 @@ $services = mysqli_query($db, $services_query)
    </div>
 </div>
 <?php endif; unset($_SESSION ['service_edit']); ?>
+<!-- delete -->
+<?php if(isset($_SESSION ['service_delete'])) : ?>
+<div class="row">
+   <div class="coll-12">
+   <div class="alert alert-custom" role="alert">
+        <div class="custom-alert-icon icon-success"><i class="material-icons-outlined">done</i></div>
+        <div class="alert-content">
+            <span class="alert-title"><?= $_SESSION ['service_delete']?></span>
+        </div>
+    </div>
+   </div>
+</div>
+<?php endif; unset($_SESSION ['service_delete']); ?>
 
 <!-- services page -->
 <div class="row">
@@ -81,7 +94,10 @@ $services = mysqli_query($db, $services_query)
                         <div class="d-flex justify-content-around align-items-center"> 
                             <a href="edit.php?editid=<?= $service['id'] ?>" class="text-primary fa-2x">
                                 <i class="fa fa-chain"></i>
-                        <a href="edit.php"> <i class="fa fa-trash-o text-danger fa-2x"></i></a>
+                            </a>
+                            <a href="store.php?deleteid=<?= $service['id'] ?>" class="text-danger fa-2x">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
                     </div>
                     </td>
                    

@@ -92,6 +92,9 @@ $user = mysqli_fetch_assoc($connect);
                     <li class="<?= ($link == "services.php") ? "active-page" : " "?>">
                         <a href="../services/services.php"><i class="material-icons-two-tone">medical_services</i>services<span class="badge rounded-pill badge-danger float-end"></span></a>
                     </li>
+                    <li class="<?= ($link == "../fact/fact.php") ? "active-page" : " "?>">
+                        <a href="../fact/fact.php"><i class="material-icons-two-tone">comment</i>Facts<span class="badge rounded-pill badge-danger float-end"></span></a>
+                    </li>
                     
                     <!-- <li>
                         <a href="file-manager.html"><i class="material-icons-two-tone">cloud_queue</i>File Manager</a>

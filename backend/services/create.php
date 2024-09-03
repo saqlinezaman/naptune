@@ -11,7 +11,7 @@ include "../../public/fonts/fonts.php";
     <div class="col-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-end">
-                <h4>Services Add</h4>   
+                <h4>Services add</h4>   
             </div>
             <div class="card-body">
                 <!-- form start -->

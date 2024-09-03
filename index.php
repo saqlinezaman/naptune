@@ -1,22 +1,24 @@
 <?php
-include "./config/database.php";
-session_start();
-if(isset($_SESSION ['author-id'])){
-    $id = $_SESSION ['author-id'] ;
+include '../Naptune/config/database.php';
+if(isset($_SESSION['author_id'])){
+    $id = $_SESSION['author_id'];
     $users_query = "SELECT * FROM users WHERE id='$id'";
     $connect = mysqli_query($db,$users_query);
-    $user= mysqli_fetch_assoc($connect);
+    $user = mysqli_fetch_assoc($connect);
 }else{
     $users_query = "SELECT * FROM users";
     $connect = mysqli_query($db,$users_query);
-    $user= mysqli_fetch_assoc($connect);
+    $user = mysqli_fetch_assoc($connect);
 }
 
-$services_query = "SELECT * FROM services WHERE status='active'";
-$services = mysqli_query($db, $services_query)
 
+$service_query = "SELECT * FROM services WHERE status='active'";
+$services = mysqli_query($db,$service_query);
 
+$fact_query = 'SELECT * FROM facts WHERE status="active"' ;
+$facts= mysqli_query($db,$fact_query);
 ?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -378,50 +380,22 @@ $services = mysqli_query($db, $services_query)
                 <div class="container">
                     <div class="fact-wrap">
                         <div class="row justify-content-between">
+                            <!-- fact start -->
+                                <?php foreach ($facts as $fact) :?>
                             <div class="col-xl-2 col-lg-3 col-sm-6">
                                 <div class="fact-box text-center mb-50">
                                     <div class="fact-icon">
-                                        <i class="flaticon-award"></i>
+                                        <i class="<?= $fact['icon'];?>"></i>
                                     </div>
                                     <div class="fact-content">
-                                        <h2><span class="count">245</span></h2>
-                                        <span>Feature Item</span>
+                                        <h2><span class="count"><?= $fact['titel'];?></h2>
+                                        <span><?= $fact['description'];?></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-6">
-                                <div class="fact-box text-center mb-50">
-                                    <div class="fact-icon">
-                                        <i class="flaticon-like"></i>
-                                    </div>
-                                    <div class="fact-content">
-                                        <h2><span class="count">345</span></h2>
-                                        <span>Active Products</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-6">
-                                <div class="fact-box text-center mb-50">
-                                    <div class="fact-icon">
-                                        <i class="flaticon-event"></i>
-                                    </div>
-                                    <div class="fact-content">
-                                        <h2><span class="count">39</span></h2>
-                                        <span>Year Experience</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-6">
-                                <div class="fact-box text-center mb-50">
-                                    <div class="fact-icon">
-                                        <i class="flaticon-woman"></i>
-                                    </div>
-                                    <div class="fact-content">
-                                        <h2><span class="count">3</span>k</h2>
-                                        <span>Our Clients</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach;?>
+                            <!-- fact end -->
+                            
                         </div>
                     </div>
                 </div>

@@ -17,6 +17,10 @@ $services = mysqli_query($db,$service_query);
 
 $fact_query = 'SELECT * FROM facts WHERE status="active"' ;
 $facts= mysqli_query($db,$fact_query);
+
+
+$testimonial_query = 'SELECT * FROM testimonials' ;
+$testimonials = mysqli_query($db,$testimonial_query);
 ?>
 
 <!doctype html>
@@ -416,30 +420,20 @@ $facts= mysqli_query($db,$fact_query);
                     <div class="row justify-content-center">
                         <div class="col-xl-9 col-lg-10">
                             <div class="testimonial-active">
+                            <?php foreach ($testimonials as $testimonial) :?>
                                 <div class="single-testimonial text-center">
                                     <div class="testi-avatar">
-                                        <img src="./public/frontend/img/images/testi_avatar.png" alt="img">
+                                        <img style="width: 150px; height:150px; border-redius:50%;" src="./public/testimonial-image/<?= $testimonial['image']?>" alt="img">
                                     </div>
                                     <div class="testi-content">
-                                        <h4><span>“</span> An event is a message sent by an object to signal the occur rence of an action. The action can causd user interaction such as a button click, or it can result <span>”</span></h4>
+                                        <h4><span>“</span> <?= $testimonial['review']?> <span>”</span></h4>
                                         <div class="testi-avatar-info">
-                                            <h5>tonoy jakson</h5>
-                                            <span>head of idea</span>
+                                            <h5><?= $testimonial['name']?></h5>
+                                            <span><?= $testimonial['designation']?></span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="single-testimonial text-center">
-                                    <div class="testi-avatar">
-                                        <img src="./public/frontend/img/images/testi_avatar.png" alt="img">
-                                    </div>
-                                    <div class="testi-content">
-                                        <h4><span>“</span> An event is a message sent by an object to signal the occur rence of an action. The action can causd user interaction such as a button click, or it can result <span>”</span></h4>
-                                        <div class="testi-avatar-info">
-                                            <h5>tonoy jakson</h5>
-                                            <span>head of idea</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

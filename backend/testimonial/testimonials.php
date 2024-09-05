@@ -34,8 +34,9 @@
                      ?>
                         <tr>
                             <th scope="row"><?= $num++ ?></th>
-                <td class="">
-                <img style="width: 80px; height:80px; border-radius:50%;" src="../../public/testimonial-image/<?=$testimonial['image']?>">
+                                <td class="">
+                                <img style="width: 80px; height:80px; border-radius:50%;" src="../../public/testimonial-image/<?=$testimonial['image']?>">
+                                </td>
                                 <td> <?= $testimonial['name']?> </td>
                                 <td><?= $testimonial['review']?></td>
                                 <td><?= $testimonial['designation']?></td>

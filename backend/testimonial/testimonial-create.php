@@ -1,7 +1,6 @@
 <?php
 
 include "../extends/header.php";
-include "../../public/fonts/fonts.php";
 
 ?>
 

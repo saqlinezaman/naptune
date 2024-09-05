@@ -92,6 +92,10 @@ $user = mysqli_fetch_assoc($connect);
                     <li class="<?= ($link == "services.php") ? "active-page" : " "?>">
                         <a href="../services/services.php"><i class="material-icons-two-tone">medical_services</i>services<span class="badge rounded-pill badge-danger float-end"></span></a>
                     </li>
+
+                    <li class="<?= ($link == "portfolios.php") ? "active-page" : " "?>">
+                        <a href="../portfolio/portfolios.php"><i class="material-icons-two-tone">light</i>Portfolios<span class="badge rounded-pill badge-danger float-end"></span></a>
+                    </li>
                     <li class="<?= ($link == "fact.php") ? "active-page" : " "?>">
                         <a href="../fact/fact.php"><i class="material-icons-two-tone">comment</i>Facts<span class="badge rounded-pill badge-danger float-end"></span></a>
                     </li>
@@ -99,10 +103,7 @@ $user = mysqli_fetch_assoc($connect);
                         <a href="../testimonial/testimonials.php"><i class="material-icons-two-tone">cloud_queue</i>Tastimonials<span class="badge rounded-pill badge-danger float-end"></span></a>
                     </li>
                     
-                    <!-- <li>
-                        <a href="file-manager.html"><i class="material-icons-two-tone">cloud_queue</i>File Manager</a>
-                    </li>
-                    <li>
+                   <!--  <li>
                         <a href="calendar.html"><i class="material-icons-two-tone">calendar_today</i>Calendar<span class="badge rounded-pill badge-success float-end">14</span></a>
                     </li>
                     <li>

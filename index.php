@@ -21,6 +21,9 @@ $facts= mysqli_query($db,$fact_query);
 
 $testimonial_query = 'SELECT * FROM testimonials' ;
 $testimonials = mysqli_query($db,$testimonial_query);
+
+$portfolios_query = 'SELECT * FROM portfolios';
+$portfolios = mysqli_query($db,$portfolios_query);
 ?>
 
 <!doctype html>
@@ -301,78 +304,20 @@ $testimonials = mysqli_query($db,$testimonial_query);
                         </div>
                     </div>
                     <div class="row">
+                            <?php foreach($portfolios as $portfolio) :?>
                         <div class="col-lg-4 col-md-6 pitem">
                             <div class="speaker-box">
 								<div class="speaker-thumb">
-									<img src="./public/frontend/img/images/1.jpg" alt="img">
+									<img src="./public/portfolio-image/<?= $portfolio['image']?>" alt="img">
 								</div>
 								<div class="speaker-overlay">
-									<span>Design</span>
-									<h4><a href="portfolio-single.html">Hamble Triangle</a></h4>
+									<span><?= $portfolio['subtitel']?></span>
+									<h4><a href="portfolio-single.html"><?= $portfolio['titel']?></a></h4>
 									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
 								</div>
 							</div>
                         </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="./public/frontend/img/images/2.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Video</span>
-									<h4><a href="portfolio-single.html">Dark Beauty</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="./public/frontend/img/images/3.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Audio</span>
-									<h4><a href="portfolio-single.html">Gilroy Limbo.</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-						<div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="./public/frontend/img/images/4.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Design</span>
-									<h4><a href="portfolio-single.html">Ipsum which</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="./public/frontend/img/images/5.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>Creative</span>
-									<h4><a href="portfolio-single.html">Eiusmod tempor</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 pitem">
-                            <div class="speaker-box">
-								<div class="speaker-thumb">
-									<img src="./public/frontend/img/images/6.jpg" alt="img">
-								</div>
-								<div class="speaker-overlay">
-									<span>UX/UI</span>
-									<h4><a href="portfolio-single.html">again there</a></h4>
-									<a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
-								</div>
-							</div>
-                        </div>
+                        <?php endforeach ;?>
                     </div>
                 </div>
             </section>

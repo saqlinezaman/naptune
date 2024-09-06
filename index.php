@@ -19,15 +19,15 @@ $fact_query = 'SELECT * FROM facts WHERE status="active"' ;
 $facts= mysqli_query($db,$fact_query);
 
 
-$testimonial_query = 'SELECT * FROM testimonials' ;
+$testimonial_query = 'SELECT * FROM testimonials WHERE status="active"' ;
 $testimonials = mysqli_query($db,$testimonial_query);
 
-$portfolios_query = 'SELECT * FROM portfolios';
+$portfolios_query = "SELECT * FROM portfolios WHERE status='active' ";
 $portfolios = mysqli_query($db,$portfolios_query);
 ?>
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-theme="light">
 
 <head>
         <meta charset="utf-8">
@@ -149,7 +149,7 @@ $portfolios = mysqli_query($db,$portfolios_query);
             <!-- banner-area -->
             <section id="home" class="banner-area banner-bg fix">
                 <div class="container">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center ">
                         <div class="col-xl-7 col-lg-6">
                             <div class="banner-content">
                                 <?php if(isset($_SESSION ['author-id'])) :?>
@@ -173,7 +173,7 @@ $portfolios = mysqli_query($db,$portfolios_query);
                         </div>
                         <div class="col-xl-5 col-lg-6 d-none d-lg-block">
                             <div class="banner-img text-right">
-                                <img src="./public/frontend/img/banner/banner_img.png" alt="">
+                                <img style="max-width: 600px;" src="./public/defult image/About Me.png" alt="">
                             </div>
                         </div>
                     </div>

@@ -37,11 +37,20 @@
                                 <td><?= $fact['titel']?></td>
                                 <td><?= $fact['description']?></td>
                                 <td>
-                                    <a href="" class="badge bg-danger text-white"><?= $fact['status']?></a>
+                                    <a href="./fact-store.php?statusid=<?= $fact['id']?>" class=" 
+                                    <?= ($fact['status'] == 'deactive') ? 'badge bg-danger' :'badge bg-success' ?> text-white"><?= 
+                                    $fact['status']?></a>
+                                </td> 
+                                <td>
+                                <div class="d-flex justify-content-around align-items-center"> 
+                                    <a href="fact-edit.php?editid=<?= $fact['id'] ?>" class="text-primary fa-2x">
+                                        <i class="fa fa-chain"></i>
+                                    </a>
+
+                                     <a href="fact-store.php?deleteid=<?=$fact['id']?>" class="text-danger fa-2x"><i class="fa fa-trash"></i></a>
                                 </td>
                                 </tr>
                                 <?php endforeach ;?>
-
                     </tbody>
                 </table>
                     </div>

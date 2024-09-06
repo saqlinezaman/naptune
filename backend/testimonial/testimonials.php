@@ -42,7 +42,17 @@
                                 <td><?= $testimonial['designation']?></td>
 
                                 <td>
-                                    <a href="" class="badge bg-danger text-white"></a>
+                                <a href="testimonial-store.php?statusid=<?=$testimonial['id']?>" class="<?= ($testimonial['status'] == 'deactive') ? 'badge bg-danger' : 'badge bg-success' ?> text-white"><?= $testimonial['status'] ?></a>
+                                </td>
+
+                                <td>
+                                <div class="d-flex justify-content-around align-items-center"> 
+                            <a href="edit.php?editid=<?= $testimonial['id'] ?>" class="text-primary fa-2x">
+                                <i class="fa fa-chain"></i>
+                            </a>
+
+                            <a href="./testimonial-store.php?deleteid=<?=$testimonial['id']?>" class="text-danger fa-2x"><i class="fa fa-trash"></i></a>
+                    </div>
                                 </td>
                                 </tr>
                                 <?php endforeach ;?>

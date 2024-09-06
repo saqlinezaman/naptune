@@ -36,10 +36,17 @@ $portfolios = mysqli_query($db,$portfolios_query);
                             </td>
                                 <td><?= $portfolio['subtitel']?></td>
                                 <td><?= $portfolio['titel']?></td>
-                                <td></td>
-
                                 <td>
-                                    <a href="" class="badge bg-danger text-white"></a>
+                                    <a href="store.php?statusid=<?= $portfolio['id'] ?>" class="<?= ($portfolio['status'] == 'deactive') ? 'badge bg-danger' : 'badge bg-success' ?> text-white"><?= $portfolio['status'] ?></a>
+                                </td>
+                                <td>
+                                <div class="d-flex justify-content-around align-items-center"> 
+                                    <a href="edit.php?editid=<?= $portfolio['id'] ?>" class="text-primary fa-2x">
+                                        <i class="fa fa-chain"></i>
+                                    </a>
+
+                                     <a href="store.php?deleteid=<?=$portfolio['id']?>" class="text-danger fa-2x"><i class="fa fa-trash"></i></a>
+                              </div>
                                 </td>
                                 </tr>
                         <?php endforeach; ?>

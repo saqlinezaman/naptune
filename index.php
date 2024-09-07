@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../Naptune/config/database.php';
 if(isset($_SESSION['author_id'])){
     $id = $_SESSION['author_id'];
@@ -6,8 +7,8 @@ if(isset($_SESSION['author_id'])){
     $connect = mysqli_query($db,$users_query);
     $user = mysqli_fetch_assoc($connect);
 }else{
-    $users_query = "SELECT * FROM users";
-    $connect = mysqli_query($db,$users_query);
+    $user_query = "SELECT * FROM users";
+    $connect = mysqli_query($db,$user_query);
     $user = mysqli_fetch_assoc($connect);
 }
 
@@ -76,8 +77,8 @@ $portfolios = mysqli_query($db,$portfolios_query);
                         <div class="col-xl-12">
                             <div class="main-menu">
                                 <nav class="navbar navbar-expand-lg">
-                                    <a href="index.php" class="navbar-brand logo-sticky-none"><img src="./public/frontend/img/logo/logo.png" alt="Logo"></a>
-                                    <a href="index.html" class="navbar-brand s-logo-none"><img src="./public/frontend/img/logo/s_logo.png" alt="Logo"></a>
+                                    <a href="index.php" class="navbar-brand logo-sticky-none" style="font-size: 24px; color: #8cc090; font-weight:600;">Saqline Zaman</a>
+                                    <a href="index.html" class="navbar-brand s-logo-none" style="font-size: 24px; color: #8cc090; font-weight:600;">Saqline Zaman</a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                                         data-target="#navbarNav">
                                         <span class="navbar-icon"></span>
@@ -152,14 +153,14 @@ $portfolios = mysqli_query($db,$portfolios_query);
                     <div class="row align-items-center ">
                         <div class="col-xl-7 col-lg-6">
                             <div class="banner-content">
-                                <?php if(isset($_SESSION ['author-id'])) :?>
+                        <?php if(isset($_SESSION ['author-id'])) :?>
 
-                                <h6 class="wow fadeInUp" data-wow-delay="0.2s">Hey<?=" ". $user['name']?></h6>
-                                <?php else : ?>
-                                <h6 class="wow fadeInUp" data-wow-delay="0.2s">Hey<?=" ". $user['name']?></h6>
-                                <?php endif; ?>
-                                <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am Will Smith</h2>
-                                <p class="wow fadeInUp" data-wow-delay="0.6s">I'm Will Smith, professional web developer with long time experience in this field​.</p>
+                        <h6 class="wow fadeInUp" data-wow-delay="0.2s">Hey moaj</h6>
+                        <?php else : ?>
+                        <h6 class="wow fadeInUp" data-wow-delay="0.2s">Hey moaj</h6>
+                        <?php endif; ?>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am Will Smith</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.6s">I'm Will Smith, professional web developer with long time experience in this field​.</p>
                                 <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
                                     <ul>
                                         <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -448,11 +449,18 @@ $portfolios = mysqli_query($db,$portfolios_query);
                         </div>
                         <div class="col-lg-6">
                             <div class="contact-form">
-                                <form action="#">
-                                    <input type="text" placeholder="your name *">
-                                    <input type="email" placeholder="your email *">
-                                    <textarea name="message" id="message" placeholder="your message *"></textarea>
-                                    <button class="btn">SEND</button>
+                                <form action="./backend/email/action.php" method="POST">
+                                    <input name="name" type="text" placeholder="your name *">
+                                    <input name="email" type="email" placeholder="your email *">
+                                    <textarea name="massage" id="message" placeholder="your message *"></textarea>
+                                    <button type="submit" name="sendbtn" class="btn">SEND</button>
+                                    <?php if(isset($_SESSION['mail-sent'])){?>
+                                        <p><?=$_SESSION['mail-sent']?></p>
+                                        <?php } unset($_SESSION['mail-sent']);?>
+                                        <!-- mai error  -->
+                                    <?php if(isset($_SESSION['mail-error'])){?>
+                                        <p class="text-danger"><?=$_SESSION['mail-error']?></p>
+                                        <?php } unset($_SESSION['mail-error']);?>
                                 </form>
                             </div>
                         </div>
